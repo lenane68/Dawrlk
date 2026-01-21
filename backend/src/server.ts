@@ -1,4 +1,6 @@
 import dotenv from "dotenv";
+import { seedServices } from "./utils/seedServices";
+
 dotenv.config();
 
 import app from "./app";
@@ -8,6 +10,7 @@ const PORT = Number(process.env.PORT || 4000);
 
 const start = async () => {
   await connectDB();
+  await seedServices();
   app.listen(PORT, () => console.log(`Server running on :${PORT}`));
 };
 
